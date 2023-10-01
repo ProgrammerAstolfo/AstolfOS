@@ -14,7 +14,6 @@ if [ "$install" != "y" ]; then
     exit 1
 fi
 
-# check if curl is installed
 if ! [ -x "$(command -v curl)" ]; then
     echo "curl is not installed. Install?"
     read -r install
