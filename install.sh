@@ -5,9 +5,10 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "Do you want to install AstolfOS? (y/n)"
+
 echo "This will overwrite some of the files in your system."
 echo "USE WITH CAUTION!"
+echo -n "Do you want to install AstolfOS? (y/n)"
 read -r install
 if [ "$install" != "y" ]; then
     echo "Aborting installation..."
