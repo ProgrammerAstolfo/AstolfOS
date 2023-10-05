@@ -20,7 +20,7 @@ if [ "$(command -v neofetch)" ]; then
     echo "Update neofetch configuration? (y/n)"
     read -r update
     if [[ "${update}" == "y" ]]; then
-        sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/neofetch.conf -o ~/.config/neofetch/config.conf
+        sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/config.conf -o ~/.config/neofetch/config.conf
     fi
 else
     echo "Neofetch is not installed, configuration will not be updated."
