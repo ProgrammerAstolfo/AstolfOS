@@ -69,14 +69,9 @@ fi
 
 if [ "$(command -v neofetch)" ]; then
     sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/ascii-art.txt -o /opt/AstolfOS/ascii-art.txt
-    read -r -p "Update neofetch configuration? (y/n)" update
-    if [[ "${update}" == "y" ]]; then
-        echo "Dropped install-user.sh"
-        echo "Please run it as a normal user."
-    fi
 fi
 
-read -r -p "Disable splash screen in GRUB? (y/n)" disable
+read -r -p "Disable splash screen in GRUB? (y/n) " disable
 if [ "$disable" == "y" ]; then
     sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT="quiet nosplash"/g' /etc/default/grub
     sudo update-grub
