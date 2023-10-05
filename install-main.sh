@@ -1,14 +1,13 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]; then
-    echo "This installation script must be run as root."
+if (( $(id -u) != 0 )); then
+    echo "This script needs to be run as root."
     exit 1
 fi
 
-
 echo "This will overwrite some of the files in your system."
 echo "USE WITH CAUTION!"
-read -r -p "Do you want to install AstolfOS? (y/n)" install
+read -r -p "Do you want to install AstolfOS? (y/n) " install
 if [ "$install" != "y" ]; then
     echo "Aborting installation..."
     exit 1
@@ -75,6 +74,12 @@ if [ "$(command -v neofetch)" ]; then
         echo "Dropped install-user.sh"
         echo "Please run it as a normal user."
     fi
+fi
+
+read -r -p "Disable splash screen in GRUB? (y/n)" disable
+if [ "$disable" == "y" ]; then
+    sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT="quiet nosplash"/g' /etc/default/grub
+    sudo update-grub
 fi
 
 echo "Finished installation. "

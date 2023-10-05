@@ -32,9 +32,3 @@ if [[ "${update}" == "y" ]]; then
     cat ~/.bashrc.append >> ~/.bashrc
     rm ~/.bashrc.append
 fi
-
-read -r -p "Disable splash screen in GRUB? (y/n)" disable
-if [ "$disable" == "y" ]; then
-    sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT="quiet nosplash"/g' /etc/default/grub
-    sudo update-grub
-fi
