@@ -34,12 +34,18 @@ sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/fi
 
 echo "Installed core components"
 
-if [ -d "/usr/share/plasma" ]; then
-    echo "Installing KDE splash..."
+if [ -f "/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/splash/images/busywidget.svgz" ]; then
+    echo "Installing KDE splash 1/2..."
     sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/kde-splash/busywidget.svgz -o /usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/splash/images/busywidget.svgz
+else
+    echo "Skipping KDE splash installation 1/2..."
+fi
+
+if [ -f "/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/splash/images/plasma.svgz" ]; then
+    echo "Installing KDE splash 2/2..."    
     sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/kde-splash/plasma.svgz -o /usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/splash/images/plasma.svgz
 else
-    echo "KDE is not installed, skipping KDE splash installation..."
+    echo "Skipping KDE splash installation 2/2..."
 fi
 
 if [ -f "/usr/share/pixmaps/ubuntu-logo-dark.png" ]; then
