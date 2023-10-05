@@ -42,6 +42,27 @@ else
     echo "KDE is not installed, skipping KDE splash installation..."
 fi
 
+if [ -f "/usr/share/pixmaps/ubuntu-logo-dark.png" ]; then
+    echo "Overwriting GNOME Ubuntu dark logo..."
+    sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/logo.png -o /usr/share/pixmaps/ubuntu-logo-dark.png    
+else
+    echo "Skipping GNOME Ubuntu logo overwrite..."
+fi
+
+if [ -f "/usr/share/pixmals/ubuntu-logo-icon.png" ]; then
+    echo "Overwriting GNOME Ubuntu icon..."
+    sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/logo.png -o /usr/share/pixmaps/ubuntu-logo-icon.png
+else
+    echo "Skipping GNOME Ubuntu icon overwrite..."
+fi
+
+if [ -f "/usr/share/plymouth/ubuntu-logo.png" ]; then
+    echo "Overwriting Plymouth Ubuntu logo..."
+    sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/logo.png -o /usr/share/plymouth/ubuntu-logo.png
+else
+    echo "Skipping Plymouth Ubuntu logo overwrite..."
+fi
+
 echo "Disable splash screen in GRUB? (y/n)"
 read -r disable
 if [ "$disable" == "y" ]; then
