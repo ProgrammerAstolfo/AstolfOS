@@ -17,8 +17,7 @@ sudo ./install-main.sh
 echo "Installing stuff for non-root user..."
 
 if [ "$(command -v neofetch)" ]; then
-    echo "Update neofetch configuration? (y/n)"
-    read -r update
+    read -r -p "Update neofetch configuration? (y/n) " update
     if [[ "${update}" == "y" ]]; then
         sudo curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/config.conf -o ~/.config/neofetch/config.conf
     fi
