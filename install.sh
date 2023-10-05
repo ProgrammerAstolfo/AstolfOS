@@ -45,7 +45,7 @@ fi
 echo "Disable splash screen in GRUB? (y/n)"
 read -r disable
 if [ "$disable" == "y" ]; then
-    sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
+    sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"/GRUB_CMDLINE_LINUX_DEFAULT="quiet nosplash"/g' /etc/default/grub
     sudo update-grub
 fi
 
@@ -58,6 +58,14 @@ if [ "$(command -v neofetch)" ]; then
     fi
 else
     echo "Neofetch is not installed, configuration will not be updated."
+fi
+
+read -r -p "Update bashrc to change the prompt? (y/n)" update
+if [[ "${update}" == "y" ]]; then
+# download and append
+    curl https://raw.githubusercontent.com/ProgrammerAstolfo/AstolfOS/master/files/bashrc.sh -o ~/.bashrc.append
+    cat ~/.bashrc.append >> ~/.bashrc
+    rm ~/.bashrc.append
 fi
 
 echo "Finished installation. "
