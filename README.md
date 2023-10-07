@@ -5,7 +5,7 @@ The Astolfo Operating System.
 ## Installation
 
 1. Clone the repository (or download the install.sh file)
-2. Run it as root
+2. Run it
 3. Confirm installation. (You may need to confirm installation of curl too)
 4. Confirm if you want to edit your GRUB config
 5. (if installed) Confirm editing of neofetch file.
